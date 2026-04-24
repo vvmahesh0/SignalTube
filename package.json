@@ -1,0 +1,66 @@
+{
+  "name": "signaltube",
+  "version": "0.1.0",
+  "private": true,
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
+    "start": "next start",
+    "desktop": "electron .",
+    "desktop:dev": "SIGNALTUBE_ELECTRON_DEV=true electron .",
+    "desktop:verify": "npm run build && electron . --no-sandbox",
+    "desktop:pack": "npm run build && CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --mac --dir",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "build": {
+    "appId": "com.signaltube.desktop",
+    "productName": "SignalTube",
+    "files": [
+      "app/**/*",
+      "components/**/*",
+      "electron/**/*",
+      "lib/**/*",
+      "data/**/*",
+      "public/**/*",
+      "Article Prompt.md",
+      "Article Short Dive Prompt.md",
+      "Article Deep Dive Prompt.md",
+      "Presentation Prompt.md",
+      ".next/**/*",
+      "next.config.ts",
+      "package.json",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "mac": {
+      "category": "public.app-category.productivity",
+      "identity": null,
+      "target": [
+        "dir"
+      ]
+    }
+  },
+  "dependencies": {
+    "lucide-react": "^1.8.0",
+    "next": "^16.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "youtube-transcript-plus": "^1.0.6",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@types/node": "^24.7.2",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "concurrently": "^9.2.1",
+    "electron": "^41.2.1",
+    "electron-builder": "^26.8.1",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4",
+    "wait-on": "^9.0.5"
+  }
+}
