@@ -86,14 +86,25 @@ SignalTube is designed to preserve a local-first workflow:
 
 ## Screenshots
 
-Add screenshots here:
+### Homepage
 
-- Homepage
-- Processing page
-- Article · Short Dive
-- Article · Deep Dive
-- Presentation
-- Library
+![SignalTube Homepage](./SignalTube%20Screenshots/Homepage.png)
+
+### Library
+
+![SignalTube Library](./SignalTube%20Screenshots/Library.png)
+
+### Article view
+
+![SignalTube Article view](./SignalTube%20Screenshots/Article%20view.png)
+
+### Key Ideas
+
+![SignalTube Key Ideas](./SignalTube%20Screenshots/Key%20Ideas.png)
+
+### Presentation
+
+![SignalTube Presentation](./SignalTube%20Screenshots/Presentation%20view.png)
 
 ## Project structure
 
