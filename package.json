@@ -26,7 +26,6 @@
       "lib/**/*",
       "data/**/*",
       "public/**/*",
-      "Article Prompt.md",
       "Article Short Dive Prompt.md",
       "Article Deep Dive Prompt.md",
       "Presentation Prompt.md",

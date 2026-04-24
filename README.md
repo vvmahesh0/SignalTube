@@ -4,8 +4,6 @@ SignalTube turns long-form content into role-aware articles and presentations th
 
 Instead of giving every reader the same bland summary, it adapts the output to a chosen role or perspective so the same source can feel more useful to a designer, developer, researcher, student, or team lead.
 
-![SignalTube Homepage](./SignalTube%20Screenshots/Homepage.png)
-
 ## Why SignalTube exists
 
 Good videos and articles often contain real signal, but the useful parts are buried under time, repetition, and jargon.
@@ -86,24 +84,6 @@ SignalTube is designed to preserve a local-first workflow:
 - future users get a fresh app state by default
 - personal demo data should stay local and out of Git
 
-## Screenshots
-
-### Library
-
-![SignalTube Library](./SignalTube%20Screenshots/Library.png)
-
-### Article view
-
-![SignalTube Article view](./SignalTube%20Screenshots/Article%20view.png)
-
-### Key Ideas
-
-![SignalTube Key Ideas](./SignalTube%20Screenshots/Key%20Ideas.png)
-
-### Presentation
-
-![SignalTube Presentation](./SignalTube%20Screenshots/Presentation%20view.png)
-
 ## Project structure
 
 Key places to inspect:
@@ -114,11 +94,17 @@ Key places to inspect:
 - [`Article Short Dive Prompt.md`](./Article%20Short%20Dive%20Prompt.md)
 - [`Article Deep Dive Prompt.md`](./Article%20Deep%20Dive%20Prompt.md)
 - [`Presentation Prompt.md`](./Presentation%20Prompt.md)
-- [`docs/engineering-note.md`](./docs/engineering-note.md) - architecture and implementation notes
 
 ## Open source notes
 
 This repo is being prepared as an open-source local-first AI product experiment.
+
+The prompt files in this public repository use simple generic versions so the app remains usable out of the box and contributors can understand the flow without exposing the more specialized prompt variants used for private distribution builds.
+
+In practice, that means:
+
+- the open-source repo includes working prompts that should still produce decent results
+- private distribution builds such as the creator's DMG may use more specialized prompt versions that are not published in this repository
 
 Areas that may continue evolving:
 
@@ -225,19 +211,6 @@ After setup:
 - If generation fails immediately, make sure your chosen provider CLI is installed and signed in.
 - If the desktop app does not open, run `npm run build` first and then try `npm run desktop` again.
 - If you only want to test the UI in a browser, use `npm run dev`.
-
-## Contributing
-
-Contributions are welcome.
-
-If you want to improve SignalTube:
-
-1. fork the repo
-2. create a branch for your change
-3. keep changes focused and easy to review
-4. include a short note on what changed and how it was tested
-
-For a little more detail, see [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## License
 
