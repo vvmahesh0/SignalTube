@@ -4,6 +4,8 @@ SignalTube turns long-form content into role-aware articles and presentations th
 
 Instead of giving every reader the same bland summary, it adapts the output to a chosen role or perspective so the same source can feel more useful to a designer, developer, researcher, student, or team lead.
 
+![SignalTube Homepage](./SignalTube%20Screenshots/Homepage.png)
+
 ## Why SignalTube exists
 
 Good videos and articles often contain real signal, but the useful parts are buried under time, repetition, and jargon.
@@ -85,10 +87,6 @@ SignalTube is designed to preserve a local-first workflow:
 - personal demo data should stay local and out of Git
 
 ## Screenshots
-
-### Homepage
-
-![SignalTube Homepage](./SignalTube%20Screenshots/Homepage.png)
 
 ### Library
 
@@ -227,6 +225,19 @@ After setup:
 - If generation fails immediately, make sure your chosen provider CLI is installed and signed in.
 - If the desktop app does not open, run `npm run build` first and then try `npm run desktop` again.
 - If you only want to test the UI in a browser, use `npm run dev`.
+
+## Contributing
+
+Contributions are welcome.
+
+If you want to improve SignalTube:
+
+1. fork the repo
+2. create a branch for your change
+3. keep changes focused and easy to review
+4. include a short note on what changed and how it was tested
+
+For a little more detail, see [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## License
 
