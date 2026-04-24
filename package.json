@@ -10,13 +10,15 @@
     "desktop": "electron .",
     "desktop:dev": "SIGNALTUBE_ELECTRON_DEV=true electron .",
     "desktop:verify": "npm run build && electron . --no-sandbox",
-    "desktop:pack": "npm run build && CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --mac --dir",
+    "desktop:pack": "npm run build && CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --mac dmg",
+    "desktop:pack:dir": "npm run build && CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --mac --dir",
     "test": "vitest run",
     "test:watch": "vitest"
   },
   "build": {
     "appId": "com.signaltube.desktop",
     "productName": "SignalTube",
+    "compression": "maximum",
     "files": [
       "app/**/*",
       "components/**/*",
@@ -30,8 +32,7 @@
       "Presentation Prompt.md",
       ".next/**/*",
       "next.config.ts",
-      "package.json",
-      "node_modules/**/*"
+      "package.json"
     ],
     "directories": {
       "output": "dist"
@@ -40,7 +41,7 @@
       "category": "public.app-category.productivity",
       "identity": null,
       "target": [
-        "dir"
+        "dmg"
       ]
     }
   },
