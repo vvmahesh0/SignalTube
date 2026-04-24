@@ -132,15 +132,101 @@ Areas that may continue evolving:
 
 ## Setup
 
-Setup is intentionally minimal in this README for now.
+### What you need
 
-At a high level, you will need:
-
-- Node.js
+- macOS
+- Node.js 20 or newer
 - npm
-- a supported local provider CLI installed and signed in
+- one supported local provider CLI installed and signed in:
+  - Claude CLI
+  - Codex CLI
+  - Gemini CLI
 
-More explicit setup, desktop packaging, and distribution instructions can be added separately once the repo structure is finalized.
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/vvmahesh0/SignalTube.git
+cd SignalTube
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Install one AI provider
+
+Choose one of these:
+
+#### Claude CLI
+
+```bash
+npm install -g @anthropic-ai/claude-code
+claude
+```
+
+#### Codex CLI
+
+```bash
+npm install -g @openai/codex
+codex
+```
+
+#### Gemini CLI
+
+```bash
+npm install -g @google/gemini-cli
+gemini
+```
+
+Complete the provider sign-in flow in your terminal before using SignalTube.
+
+### 4. Run SignalTube
+
+For the desktop app:
+
+```bash
+npm run build
+npm run desktop
+```
+
+For web development only:
+
+```bash
+npm run dev
+```
+
+### 5. What to expect
+
+- a fresh local app state on first run
+- an empty library by default
+- generated memos saved locally on your machine
+- no server-side API key required by the app itself
+
+### Local data
+
+SignalTube is local-first.
+
+- desktop app data is stored in macOS Application Support
+- repo clones do not include someone else’s memo library
+- your own generated memos stay local unless you export them yourself
+
+### Verification
+
+After setup:
+
+1. open the app
+2. paste a public YouTube, Medium, or Substack link
+3. choose a role and output mode
+4. generate a memo or presentation
+5. confirm it appears in the local library
+
+### Troubleshooting
+
+- If generation fails immediately, make sure your chosen provider CLI is installed and signed in.
+- If the desktop app does not open, run `npm run build` first and then try `npm run desktop` again.
+- If you only want to test the UI in a browser, use `npm run dev`.
 
 ## License
 
