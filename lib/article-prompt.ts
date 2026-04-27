@@ -16,6 +16,12 @@ type BuildPromptInput = {
   roleDetails?: string;
 };
 
+const SOURCE_TEXT_LIMITS: Record<MemoPresentationMode, number> = {
+  short: 50000,
+  deep: 70000,
+  presentation: 45000
+};
+
 const ROLE_LABELS: Record<PredefinedRoleLensId, string> = {
   hai: "HAI Designer",
   ux: "UX Designer",
@@ -63,6 +69,7 @@ export function buildGenerationPrompt(input: BuildPromptInput): string {
   const sourceLabel = SOURCE_LABELS[input.sourceType];
   const roleName = input.roleName?.trim() || roleLabelFromId(input.roleLens);
   const roleDetails = input.roleDetails?.trim();
+  const sourceText = sourceTextForMode(input.sourceText, input.mode);
 
   return `${prompt}
 
@@ -141,7 +148,7 @@ ${roleDetails ? `Custom role context:\n${roleDetails}\n` : ""}
 Selected output mode: ${outputModeLabel(input.mode)}
 
 Source text:
-${input.sourceText}`;
+${sourceText}`;
 }
 
 function outputModeLabel(mode: MemoPresentationMode) {
@@ -156,4 +163,24 @@ export function roleLabelFromId(roleLens: RoleLensId) {
   }
 
   return "Custom role";
+}
+
+function sourceTextForMode(sourceText: string, mode: MemoPresentationMode) {
+  const normalized = sourceText.replace(/\s+/g, " ").trim();
+  const limit = SOURCE_TEXT_LIMITS[mode];
+
+  if (normalized.length <= limit) {
+    return normalized;
+  }
+
+  const headLength = Math.floor(limit * 0.72);
+  const tailLength = limit - headLength;
+  const head = normalized.slice(0, headLength).trim();
+  const tail = normalized.slice(-tailLength).trim();
+
+  return `${head}
+
+[SignalTube note: the source was longer than the safe provider context budget, so the middle portion was omitted. Use the beginning and ending source material below, stay faithful to what is provided, and avoid inventing claims from omitted sections.]
+
+${tail}`;
 }

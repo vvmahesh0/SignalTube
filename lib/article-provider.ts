@@ -187,6 +187,10 @@ function normalizePresentationPayload(raw: unknown): unknown {
 
   return {
     ...payload,
+    keyIdeas: Array.isArray(payload.keyIdeas) ? payload.keyIdeas : undefined,
+    concepts: Array.isArray(payload.concepts) ? payload.concepts : undefined,
+    relevance: typeof payload.relevance === "string" ? payload.relevance : undefined,
+    deepDive: Array.isArray(payload.deepDive) ? payload.deepDive : undefined,
     slides
   };
 }

@@ -6,8 +6,24 @@ const next = require("next");
 
 const useNextDev = process.env.SIGNALTUBE_ELECTRON_DEV === "true";
 const PORT = Number(process.env.SIGNALTUBE_DESKTOP_PORT || 41739);
+const DESKTOP_PATH_ENTRIES = [
+  "/opt/homebrew/bin",
+  "/opt/homebrew/sbin",
+  "/usr/local/bin",
+  "/usr/local/sbin",
+  "/usr/bin",
+  "/bin",
+  "/usr/sbin",
+  "/sbin"
+];
 
 let server;
+
+function ensureDesktopPath() {
+  const existing = (process.env.PATH || "").split(path.delimiter).filter(Boolean);
+  const merged = [...DESKTOP_PATH_ENTRIES, ...existing];
+  process.env.PATH = Array.from(new Set(merged)).join(path.delimiter);
+}
 
 const ASSET_TYPES = {
   ".svg": "image/svg+xml; charset=utf-8",
@@ -97,6 +113,7 @@ function createWindow() {
 
 app.whenReady().then(async () => {
   app.setName("SignalTube");
+  ensureDesktopPath();
   await startNextServer();
   createWindow();
 

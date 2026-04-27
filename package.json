@@ -1,6 +1,8 @@
 {
   "name": "signaltube",
   "version": "0.1.0",
+  "description": "A local-first intelligence layer that turns long-form content into role-aware articles and presentations.",
+  "author": "Mahesh V V",
   "private": true,
   "main": "electron/main.cjs",
   "scripts": {
@@ -38,6 +40,7 @@
     },
     "mac": {
       "category": "public.app-category.productivity",
+      "icon": "public/assets/signaltube-icon.icns",
       "identity": null,
       "target": [
         "dmg"

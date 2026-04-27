@@ -1,5 +1,25 @@
 import { spawn } from "node:child_process";
 import fs from "node:fs/promises";
+import path from "node:path";
+
+const CLI_PATH_ENTRIES = [
+  "/opt/homebrew/bin",
+  "/opt/homebrew/sbin",
+  "/usr/local/bin",
+  "/usr/local/sbin",
+  "/usr/bin",
+  "/bin",
+  "/usr/sbin",
+  "/sbin"
+];
+
+function cliEnv() {
+  const existing = (process.env.PATH || "").split(path.delimiter).filter(Boolean);
+  return {
+    ...process.env,
+    PATH: Array.from(new Set([...CLI_PATH_ENTRIES, ...existing])).join(path.delimiter)
+  };
+}
 
 export async function runCliCommand(
   command: string,
@@ -13,7 +33,7 @@ export async function runCliCommand(
   return new Promise<string>((resolve, reject) => {
     const child = spawn(command, args, {
       cwd: options.cwd,
-      env: process.env,
+      env: cliEnv(),
       stdio: ["pipe", "pipe", "pipe"]
     });
 
@@ -77,7 +97,7 @@ export async function resolveBinary(
 
 async function commandExists(command: string): Promise<boolean> {
   return new Promise((resolve) => {
-    const child = spawn("command", ["-v", command], { shell: true, stdio: "ignore" });
+    const child = spawn("command", ["-v", command], { shell: true, env: cliEnv(), stdio: "ignore" });
     child.on("error", () => resolve(false));
     child.on("close", (code) => resolve(code === 0));
   });

@@ -186,9 +186,34 @@ export const generatedPresentationJsonSchema = {
       items: { type: "string", minLength: 1 }
     },
     keyIdeas: generatedMemoJsonSchema.properties.keyIdeas,
-    concepts: generatedMemoJsonSchema.properties.concepts,
+    concepts: {
+      type: "array",
+      maxItems: 5,
+      items: {
+        type: "object",
+        additionalProperties: false,
+        required: ["term", "definition", "whyItMatters"],
+        properties: {
+          term: { type: "string", minLength: 1 },
+          definition: { type: "string", minLength: 1 },
+          whyItMatters: { type: ["string", "null"] }
+        }
+      }
+    },
     relevance: { type: "string", minLength: 1 },
-    deepDive: generatedMemoJsonSchema.properties.deepDive,
+    deepDive: {
+      type: "array",
+      maxItems: 3,
+      items: {
+        type: "object",
+        additionalProperties: false,
+        required: ["heading", "body"],
+        properties: {
+          heading: { type: "string", minLength: 1 },
+          body: { type: "string", minLength: 1 }
+        }
+      }
+    },
     slides: {
       type: "array",
       minItems: 5,
@@ -196,20 +221,20 @@ export const generatedPresentationJsonSchema = {
       items: {
         type: "object",
         additionalProperties: false,
-        required: ["slideNumber", "title", "type"],
+        required: ["slideNumber", "title", "goal", "type", "content", "supportingLabel", "keyLine", "bullets", "note"],
         properties: {
           slideNumber: { type: "number" },
           title: { type: "string", minLength: 1 },
-          goal: { type: "string" },
+          goal: { type: ["string", "null"] },
           type: { type: "string", enum: ["title", "statement", "list", "quote", "action"] },
-          content: { type: "string" },
-          supportingLabel: { type: "string" },
-          keyLine: { type: "string" },
+          content: { type: ["string", "null"] },
+          supportingLabel: { type: ["string", "null"] },
+          keyLine: { type: ["string", "null"] },
           bullets: {
-            type: "array",
+            type: ["array", "null"],
             items: { type: "string" }
           },
-          note: { type: "string" }
+          note: { type: ["string", "null"] }
         }
       }
     }

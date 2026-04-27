@@ -12,6 +12,8 @@ coverage/
 *.tmp
 *.temp
 *.pen
+launch-video/out/
+launch-video/.cache/
 data/.DS_Store
 data/memos/*.json
 data/memos/.DS_Store
