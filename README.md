@@ -2,7 +2,11 @@
 
 SignalTube turns long-form content into role-aware articles and presentations that help you understand what matters faster.
 
-[![Watch the SignalTube demo](./SignalTube%20Screenshots/Homepage.png)](https://youtu.be/wXW_3n7azpU)
+## 🎥 Demo
+
+Experience how SignalTube adapts content to your role.
+
+[![SignalTube Demo](./SignalTube%20Screenshots/Homepage.png)](https://www.youtube.com/watch?v=wXW_3n7azpU)
 
 [Watch the SignalTube demo](https://youtu.be/wXW_3n7azpU)
 
