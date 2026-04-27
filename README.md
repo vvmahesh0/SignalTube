@@ -2,32 +2,59 @@
 
 SignalTube turns long-form content into role-aware articles and presentations that help you understand what matters faster.
 
-Instead of giving every reader the same bland summary, it adapts the output to a chosen role or perspective so the same source can feel more useful to a designer, developer, researcher, student, or team lead.
+![SignalTube homepage](./SignalTube%20Screenshots/Homepage.png)
 
-## Why SignalTube exists
+## Download
 
-Good videos and articles often contain real signal, but the useful parts are buried under time, repetition, and jargon.
+The easiest way to try SignalTube is to download the macOS app from the latest GitHub release:
 
-SignalTube is built for people who want:
+[Download SignalTube for macOS](https://github.com/vvmahesh0/SignalTube/releases/latest/download/SignalTube-0.1.0-arm64.dmg)
 
-- faster understanding without flattening the source into generic summary sludge
-- outputs shaped by their role, goals, or perspective
-- reusable knowledge artifacts instead of one-off chat answers
-- a local-first workflow that works with AI tools already installed on their Mac
+Current build:
 
-## What makes it different from generic summarizers
+- macOS Apple Silicon
+- local-first desktop app
+- works with local Claude, Codex, or Gemini CLI sessions
 
-SignalTube is not just a one-shot summary generator. It is built around:
+Note: the current DMG is an early public build. If macOS shows a security warning, open it using right-click > Open. A fully signed and notarized build is planned.
 
-- role-aware interpretation
-- multiple output modes for different reading needs
-- local-first memo storage
-- on-demand counterpart generation
-- a reading-first interface instead of a chat dump
+## Why I built it
+
+I have a constantly growing Watch Later list on YouTube. A lot of it is podcasts, interviews, AI announcements, technical videos, and research discussions. I also save articles from Medium and Substack.
+
+The problem was not only that there was too much to watch or read. The bigger problem was that even when I tried to consume it, the useful signal was often hard to understand, especially when the topic was technical or outside my direct field.
+
+Generic AI summaries helped a little, but not enough. If the original topic is complex, a generic summary can still leave you wondering: "What does this actually mean for me?"
+
+SignalTube is built around that exact gap.
+
+## What SignalTube does
+
+Paste a YouTube, Medium, or Substack link, choose a role or perspective, and choose the output you want.
+
+SignalTube then turns the source into:
+
+- `Article · Short Dive` for quick understanding
+- `Article · Deep Dive` for a richer long-form read
+- `Presentation` for a slide-style version you can scan or share
+
+The core idea is simple: SignalTube does not just summarize content. It interprets long-form content based on who is reading it.
+
+## What makes it different
+
+Most summarizers compress the same source in the same way for everyone.
+
+SignalTube is built for role-aware understanding:
+
+- a design manager can extract what an AI research discussion means for team direction
+- a founder can use the same source to understand where the market or industry is heading
+- a UX designer can focus on product implications, user behavior, and interface tradeoffs
+- a developer can look for implementation signals, architecture ideas, and tooling direction
+- a manager can turn dense material into something easier to share with a team
+
+That makes the output more usable, not just shorter.
 
 ## Supported inputs
-
-Paste a public link from:
 
 - YouTube
 - Medium
@@ -36,87 +63,67 @@ Paste a public link from:
 ## Supported outputs
 
 - `Article · Short Dive`  
-  A concise memo for quick understanding with summary, key ideas, key concepts, and professional relevance.
+  A concise role-aware memo with summary, key ideas, key concepts, and relevance.
 
 - `Article · Deep Dive`  
-  A richer editorial memo with stronger structure, more depth, and long-form readability.
+  A richer editorial version for when you want nuance and deeper context.
 
 - `Presentation`  
-  A slide-based quick-read format for scanning, reviewing, and sharing ideas.
+  A slide-style quick-read output for reviewing or sharing.
 
-## Supported providers
+## Local AI providers
 
-SignalTube currently works with local CLI-based providers already installed on the user’s machine:
+SignalTube works with AI tools already installed on your machine:
 
 - Claude CLI
 - Codex CLI
 - Gemini CLI
 
-These run through background local CLI invocation rather than a visible in-app chat thread.
+The app invokes these tools in the background through local CLI calls. It does not create a visible saved chat thread in those tools.
 
 ## Role-aware output
 
-SignalTube supports:
+SignalTube supports predefined roles such as:
 
-- predefined roles such as `HAI Designer`, `UX Designer`, `Developer`, and `I’m a kid`
-- custom roles with saved context
+- `HAI Designer`
+- `UX Designer`
+- `Developer`
+- `I'm a kid`
 
-Custom roles can describe:
+It also supports custom roles. You can define your own role by describing:
 
-- what the person does day to day
-- what outcomes matter most in their work
-- what lens the content should be interpreted through
-- any extra context that makes the output more useful
+- what you do day to day
+- what decisions or outcomes matter most
+- what perspective SignalTube should use when interpreting content
+- any extra context that would make the output more useful
 
-## Example use cases
+## Screenshots
 
-- turn a long AI talk into a quick role-aware memo before a meeting
-- generate a deeper editorial write-up from a video worth studying carefully
-- create a presentation-style digest for sharing with a team
-- reinterpret the same source differently for design, product, engineering, or learning
+### Article view
 
-## Local-first behavior
+![SignalTube article view](./SignalTube%20Screenshots/Article%20view.png)
 
-SignalTube is designed to preserve a local-first workflow:
+### Key Ideas
 
-- generated memos are stored locally
-- the library is searchable and sortable
-- future users get a fresh app state by default
-- personal demo data should stay local and out of Git
+![SignalTube key ideas](./SignalTube%20Screenshots/Key%20Ideas.png)
 
-## Project structure
+### Presentation
 
-Key places to inspect:
+![SignalTube presentation view](./SignalTube%20Screenshots/Presentation%20view.png)
 
-- [`app/`](./app) - routes and API endpoints
-- [`components/`](./components) - UI screens and shared components
-- [`lib/`](./lib) - ingestion, storage, providers, prompt loading, and parsing
-- [`Article Short Dive Prompt.md`](./Article%20Short%20Dive%20Prompt.md)
-- [`Article Deep Dive Prompt.md`](./Article%20Deep%20Dive%20Prompt.md)
-- [`Presentation Prompt.md`](./Presentation%20Prompt.md)
+### Library
+
+![SignalTube library](./SignalTube%20Screenshots/Library.png)
 
 ## Open source notes
 
-This repo is being prepared as an open-source local-first AI product experiment.
+This repository includes simple generic prompts so the app remains usable and understandable as an open-source project.
 
-The prompt files in this public repository use simple generic versions so the app remains usable out of the box and contributors can understand the flow without exposing the more specialized prompt variants used for private distribution builds.
+Private distribution builds may use more specialized prompt variants. The public prompts are intentionally simpler, but they still demonstrate the product flow and produce usable outputs.
 
-In practice, that means:
+## Setup from source
 
-- the open-source repo includes working prompts that should still produce decent results
-- private distribution builds such as the creator's DMG may use more specialized prompt versions that are not published in this repository
-
-Areas that may continue evolving:
-
-- prompt quality
-- provider support
-- presentation rendering
-- packaging and distribution
-- richer library intelligence
-
-## Setup
-
-### What you need
+### Requirements
 
 - macOS
 - Node.js 20 or newer
@@ -126,91 +133,42 @@ Areas that may continue evolving:
   - Codex CLI
   - Gemini CLI
 
-### 1. Clone the repo
+### Install
 
 ```bash
 git clone https://github.com/vvmahesh0/SignalTube.git
 cd SignalTube
-```
-
-### 2. Install dependencies
-
-```bash
 npm install
 ```
 
-### 3. Install one AI provider
-
-Choose one of these:
-
-#### Claude CLI
-
-```bash
-npm install -g @anthropic-ai/claude-code
-claude
-```
-
-#### Codex CLI
-
-```bash
-npm install -g @openai/codex
-codex
-```
-
-#### Gemini CLI
-
-```bash
-npm install -g @google/gemini-cli
-gemini
-```
-
-Complete the provider sign-in flow in your terminal before using SignalTube.
-
-### 4. Run SignalTube
-
-For the desktop app:
+### Run the desktop app
 
 ```bash
 npm run build
 npm run desktop
 ```
 
-For web development only:
+### Run web development mode
 
 ```bash
 npm run dev
 ```
 
-### 5. What to expect
+## Local-first behavior
 
-- a fresh local app state on first run
-- an empty library by default
-- generated memos saved locally on your machine
-- no server-side API key required by the app itself
+- generated memos are saved locally on your machine
+- repo clones do not include anyone else's library or history
+- new users start with a fresh empty library
+- no server-side API key is required by the app itself
 
-### Local data
+## Project structure
 
-SignalTube is local-first.
-
-- desktop app data is stored in macOS Application Support
-- repo clones do not include someone else’s memo library
-- your own generated memos stay local unless you export them yourself
-
-### Verification
-
-After setup:
-
-1. open the app
-2. paste a public YouTube, Medium, or Substack link
-3. choose a role and output mode
-4. generate a memo or presentation
-5. confirm it appears in the local library
-
-### Troubleshooting
-
-- If generation fails immediately, make sure your chosen provider CLI is installed and signed in.
-- If the desktop app does not open, run `npm run build` first and then try `npm run desktop` again.
-- If you only want to test the UI in a browser, use `npm run dev`.
+- [`app/`](./app) - routes and API endpoints
+- [`components/`](./components) - UI screens and shared components
+- [`lib/`](./lib) - ingestion, storage, providers, prompt loading, and parsing
+- [`Article Short Dive Prompt.md`](./Article%20Short%20Dive%20Prompt.md)
+- [`Article Deep Dive Prompt.md`](./Article%20Deep%20Dive%20Prompt.md)
+- [`Presentation Prompt.md`](./Presentation%20Prompt.md)
 
 ## License
 
