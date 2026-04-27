@@ -6,8 +6,6 @@ SignalTube turns long-form content into role-aware articles and presentations th
 
 [Watch the SignalTube demo](https://youtu.be/wXW_3n7azpU)
 
-![SignalTube homepage](./SignalTube%20Screenshots/Homepage.png)
-
 ## Download
 
 The easiest way to try SignalTube is to download the macOS app from the latest GitHub release:
@@ -102,6 +100,10 @@ It also supports custom roles. You can define your own role by describing:
 - any extra context that would make the output more useful
 
 ## Screenshots
+
+### Homepage view
+
+![SignalTube homepage](./SignalTube%20Screenshots/Homepage.png)
 
 ### Article view
 
